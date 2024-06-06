@@ -1,0 +1,3 @@
+C:\Users\masha\source\repos\MPLC\MPLC\Debug\MPLC.vcxprojAssemblyReference.cache
+C:\Users\masha\source\repos\MPLC\MPLC\Debug\MPLC.mplc.resources
+C:\Users\masha\source\repos\MPLC\MPLC\Debug\MPLC.vcxproj.GenerateResource.cache
