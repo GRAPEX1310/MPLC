@@ -118,9 +118,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="MicroCommand.cpp" />
+    <ClCompile Include="MicroOperation.cpp" />
+    <ClCompile Include="MicroProgramm.cpp" />
     <ClCompile Include="mplc.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MicroCommand.h" />
+    <ClInclude Include="MicroOperation.h" />
+    <ClInclude Include="MicroProgramm.h" />
     <ClInclude Include="mplc.h">
       <FileType>CppForm</FileType>
     </ClInclude>

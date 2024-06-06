@@ -1,0 +1,2 @@
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\x64\Debug\MPLC.mplc.resources
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\x64\Debug\MPLC.vcxproj.GenerateResource.cache
