@@ -754,19 +754,20 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		cur.second = 0;
 		logicalValues[i].push_back(cur);
 
-		cur.first = numberOfLC + 1;
-		cur.second = 1;
-		logicalValues[i].push_back(cur);
 
 		for (int j = 0; j < numberOfLC; j++)
 		{
 			cur.first = j + 1;
-			if (Convert::ToString(dataGridView5[j, i]->Value) == L"1")
+			if (Convert::ToString(dataGridView5[j + 1, i]->Value) == L"1")
 				cur.second = 1;
 			else
 				cur.second = 0;
 			logicalValues[i].push_back(cur);
 		}
+
+		cur.first = numberOfLC + 1;
+		cur.second = 1;
+		logicalValues[i].push_back(cur);
 	}
 
 	MicroProgramm programm;
@@ -775,6 +776,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	programm.numberOfCommands = numberrOfMC;
 	programm.microOperations = microOperation;
 	programm.logicalConditions = LogicalConditions;
+
 	//считываем таблицу микропрограммы
 	std::vector<MicroCommand> prog(numberrOfMC);
 	int ind = numberOfSetsYi + 1;
@@ -811,7 +813,6 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 	std::vector<int> res = programm.Modeling(numberOfTacts);
 	System::String^ result = L"";
-	
 	for (int i = 0; i < res.size(); i++)
 	{
 		if (result != L"")
