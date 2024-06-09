@@ -1,0 +1,11 @@
+﻿  MicroCommand.cpp
+  MicroOperation.cpp
+  MicroProgramm.cpp
+  mplc.cpp
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(642,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(771,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1161,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+  .NETFramework,Version=v4.6.1.AssemblyAttributes.cpp
+  Generating Code...
+  MicroCommand.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  MPLC.vcxproj -> C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\x64\Release\MPLC.exe
