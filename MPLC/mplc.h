@@ -15,6 +15,7 @@ namespace MPLC {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+
 	/// <summary>
 	/// Summary for mplc
 	/// </summary>
@@ -901,10 +902,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		{
 			if (result != L"")
 				result += L"; ";
-			result += gcnew String(prog[res[i]].microOperations[0].yi.c_str());
+			result += gcnew String(prog.at(res.at(i)).microOperations.at(0).yi.c_str());
 			for (int j = 1; j < numberOfSetsYi; j++)
 			{
-				result += L", " + gcnew String(prog[res[i]].microOperations[j].yi.c_str());
+				result += L", " + gcnew String(prog.at(res.at(i)).microOperations.at(j).yi.c_str());
 			}
 		}
 
@@ -1111,8 +1112,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			this->TextResult->Text += result;
 			if (prog[currentStep].A1 == -1)
 				currentStep = -1;
-			else if (prog[currentStep].i != programm.valuesOfXi[currentTact][programm.microCommands[currentStep].x].second)
-				currentStep = programm.microCommands[currentStep].A1;
+			else if (prog.at(currentStep).i != programm.valuesOfXi.at(currentTact).at(programm.microCommands.at(currentStep).x).second)
+				currentStep = programm.microCommands.at(currentStep).A1;
 			else
 				currentStep++;
 			currentTact++;

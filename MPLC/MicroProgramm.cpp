@@ -7,10 +7,10 @@ std::vector<int> MicroProgramm::Modeling(int numberOfTacts)
 	int cur = 0;
 	int curTact = 0;
 	res.push_back(0);
-	while (cur < this->numberOfCommands && curTact < numberOfTacts && microCommands[cur].A1 != -1)
+	while (cur < this->numberOfCommands && curTact < numberOfTacts && microCommands.at(cur).A1 != -1)
 	{
-		if (microCommands[cur].i != this->valuesOfXi[curTact][microCommands[cur].x].second)
-			cur = microCommands[cur].A1;
+		if (microCommands.at(cur).i != this->valuesOfXi.at(curTact).at(microCommands.at(cur).x).second)
+			cur = microCommands.at(cur).A1;
 		else
 			cur++;
 		if(cur < this->numberOfCommands)
