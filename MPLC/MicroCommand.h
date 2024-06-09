@@ -9,13 +9,13 @@ public:
 	int number; //номер
 	std::string code; //код
 	std::vector<MicroOperation> microOperations; //список микроопераций
-	std::string x; //код х
+	int x; //код х
 	bool i;
 	int A1; //адрес перехода
 
 	MicroCommand() {}
 
-	MicroCommand(int number, std::string code, std::vector<MicroOperation>& microOperations, std::string x, bool i, int A1)
+	MicroCommand(int number, std::string code, std::vector<MicroOperation>& microOperations, int x, bool i, int A1)
 	{
 		this->number = number;
 		this->code = code;
