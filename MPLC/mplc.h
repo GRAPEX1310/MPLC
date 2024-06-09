@@ -77,12 +77,20 @@ namespace MPLC {
 	private: System::Windows::Forms::RichTextBox^ TextCurrentRes;
 		   int currentStep = 0;
 		   int currentTact = 0;
+	private: System::Windows::Forms::Button^ button4;
+	private: System::Windows::Forms::RichTextBox^ richTextBox13;
+
+
+
+	private:
+	private: System::ComponentModel::IContainer^ components;
+	public:
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -126,6 +134,8 @@ namespace MPLC {
 			this->TextResult = (gcnew System::Windows::Forms::RichTextBox());
 			this->richTextBox12 = (gcnew System::Windows::Forms::RichTextBox());
 			this->TextCurrentRes = (gcnew System::Windows::Forms::RichTextBox());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->richTextBox13 = (gcnew System::Windows::Forms::RichTextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
@@ -314,7 +324,7 @@ namespace MPLC {
 				this->Column5,
 					this->Column6, this->Column7, this->Column8, this->Column9
 			});
-			this->dataGridView4->Location = System::Drawing::Point(453, 455);
+			this->dataGridView4->Location = System::Drawing::Point(453, 467);
 			this->dataGridView4->Name = L"dataGridView4";
 			this->dataGridView4->RowHeadersWidth = 20;
 			this->dataGridView4->Size = System::Drawing::Size(520, 540);
@@ -371,9 +381,9 @@ namespace MPLC {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(453, 410);
+			this->button1->Location = System::Drawing::Point(584, 410);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(117, 39);
+			this->button1->Size = System::Drawing::Size(125, 51);
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"Run";
 			this->button1->UseVisualStyleBackColor = true;
@@ -381,19 +391,19 @@ namespace MPLC {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(576, 410);
+			this->button2->Location = System::Drawing::Point(715, 410);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(117, 39);
+			this->button2->Size = System::Drawing::Size(125, 51);
 			this->button2->TabIndex = 14;
-			this->button2->Text = L"Моделирование по шагам";
+			this->button2->Text = L"Начать моделирование по шагам";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &mplc::button2_Click);
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(699, 410);
+			this->button3->Location = System::Drawing::Point(846, 410);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(117, 39);
+			this->button3->Size = System::Drawing::Size(125, 51);
 			this->button3->TabIndex = 15;
 			this->button3->Text = L"Step";
 			this->button3->UseVisualStyleBackColor = true;
@@ -408,11 +418,12 @@ namespace MPLC {
 			this->dataGridView5->AllowUserToResizeRows = false;
 			this->dataGridView5->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView5->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column12 });
-			this->dataGridView5->Location = System::Drawing::Point(1, 455);
+			this->dataGridView5->Location = System::Drawing::Point(1, 467);
 			this->dataGridView5->Name = L"dataGridView5";
 			this->dataGridView5->RowHeadersWidth = 20;
 			this->dataGridView5->Size = System::Drawing::Size(120, 540);
 			this->dataGridView5->TabIndex = 16;
+			this->dataGridView5->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &mplc::dataGridView5_CellContentClick);
 			// 
 			// Column12
 			// 
@@ -438,7 +449,7 @@ namespace MPLC {
 			this->richTextBox11->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->richTextBox11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBox11->Location = System::Drawing::Point(871, 376);
+			this->richTextBox11->Location = System::Drawing::Point(1040, 376);
 			this->richTextBox11->Name = L"richTextBox11";
 			this->richTextBox11->ReadOnly = true;
 			this->richTextBox11->Size = System::Drawing::Size(102, 25);
@@ -450,10 +461,10 @@ namespace MPLC {
 			this->TextResult->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->TextResult->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TextResult->Location = System::Drawing::Point(979, 376);
+			this->TextResult->Location = System::Drawing::Point(1148, 376);
 			this->TextResult->Name = L"TextResult";
 			this->TextResult->ReadOnly = true;
-			this->TextResult->Size = System::Drawing::Size(913, 25);
+			this->TextResult->Size = System::Drawing::Size(744, 25);
 			this->TextResult->TabIndex = 19;
 			this->TextResult->Text = L"";
 			// 
@@ -463,7 +474,7 @@ namespace MPLC {
 			this->richTextBox12->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->richTextBox12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBox12->Location = System::Drawing::Point(871, 410);
+			this->richTextBox12->Location = System::Drawing::Point(977, 407);
 			this->richTextBox12->Name = L"richTextBox12";
 			this->richTextBox12->ReadOnly = true;
 			this->richTextBox12->Size = System::Drawing::Size(165, 25);
@@ -476,18 +487,45 @@ namespace MPLC {
 			this->TextCurrentRes->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->TextCurrentRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TextCurrentRes->Location = System::Drawing::Point(1042, 410);
+			this->TextCurrentRes->Location = System::Drawing::Point(1148, 410);
 			this->TextCurrentRes->Name = L"TextCurrentRes";
 			this->TextCurrentRes->ReadOnly = true;
-			this->TextCurrentRes->Size = System::Drawing::Size(850, 25);
+			this->TextCurrentRes->Size = System::Drawing::Size(744, 25);
 			this->TextCurrentRes->TabIndex = 21;
 			this->TextCurrentRes->Text = L"";
 			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(453, 410);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(125, 51);
+			this->button4->TabIndex = 22;
+			this->button4->Text = L"Очистить все";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &mplc::button4_Click);
+			// 
+			// richTextBox13
+			// 
+			this->richTextBox13->BackColor = System::Drawing::SystemColors::Menu;
+			this->richTextBox13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->richTextBox13->ForeColor = System::Drawing::Color::Red;
+			this->richTextBox13->Location = System::Drawing::Point(688, 9);
+			this->richTextBox13->Name = L"richTextBox13";
+			this->richTextBox13->ReadOnly = true;
+			this->richTextBox13->Size = System::Drawing::Size(366, 30);
+			this->richTextBox13->TabIndex = 23;
+			this->richTextBox13->Text = L"Некорректно введенные данные";
+			this->richTextBox13->Visible = false;
+			// 
 			// mplc
 			// 
+			this->AccessibleRole = System::Windows::Forms::AccessibleRole::MenuBar;
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1904, 1041);
+			this->Controls->Add(this->richTextBox13);
+			this->Controls->Add(this->button4);
 			this->Controls->Add(this->TextCurrentRes);
 			this->Controls->Add(this->richTextBox12);
 			this->Controls->Add(this->TextResult);
@@ -531,68 +569,9 @@ namespace MPLC {
 	private: System::Void richTextBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void richTextBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		this->dataGridView1->Rows->Clear();
-		if (this->richTextBox2->Text != L"")
-		{
-			int number = Int32::Parse(this->richTextBox2->Text);
-
-			this->dataGridView4->Rows->Clear();
-			this->dataGridView4->Rows->Add(number);
-			for (int i = 0; i < number; i++)
-			{
-				this->dataGridView4[0, i]->Value = i;
-			}
-
-			int pow2 = 1;
-			int p = 2;
-			while (p < number)
-			{
-				pow2++;
-				p *= 2;
-			}
-			for (int i = 0; i < number; i++)
-			{
-				this->dataGridView1->Rows->Add(1);
-				int cur = i;
-				System::String^ s = L"";
-				while (cur > 0)
-				{
-					s = (cur % 2) + s;
-					cur /= 2;
-				}
-				while (s->Length < pow2)
-					s = 0 + s;
-				this->dataGridView1[1, i]->Value = s;
-				this->dataGridView1[0, i]->Value = i;
-			}
-		}
-	}
-	private: System::Void richTextBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		if (richTextBox4->Text != L"")
-		{
-			this->dataGridView2->Columns->Clear();
-			int numberOfMO = Convert::ToInt32(richTextBox4->Text);
-
-			this->dataGridView4->Columns->Clear();
-			int cntOfColumns = 0;
-			cntOfColumns++;
-			this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"Адрес");
-			for (int i = 0; i < numberOfMO; i++)
-			{
-				cntOfColumns++;
-				this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"Y" + (i + 1));
-			}
-			cntOfColumns++;
-			this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"x");
-			cntOfColumns++;
-			this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"i");
-			cntOfColumns++;
-			this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"A1");
-			if(10 < numberOfMO)
-				this->dataGridView4->Size = System::Drawing::Size(20 + 10 *100, 540);
-			else
-				this->dataGridView4->Size = System::Drawing::Size(20 + (numberOfMO + 4) * 100, 540);
-
+		this->richTextBox13->Visible = false;
+		try {
+			this->dataGridView1->Rows->Clear();
 			if (this->richTextBox2->Text != L"")
 			{
 				int number = Int32::Parse(this->richTextBox2->Text);
@@ -603,87 +582,174 @@ namespace MPLC {
 				{
 					this->dataGridView4[0, i]->Value = i;
 				}
-			}
 
-			cntOfColumns = 0;
-			for (int i = 0; i < numberOfMO; i++)
-			{
-				cntOfColumns++;
-				this->dataGridView2->Columns->Add(L"Column" + cntOfColumns, L"Код");
-				cntOfColumns++;
-				this->dataGridView2->Columns->Add(L"Column" + cntOfColumns, L"Y" + (i + 1));
+				int pow2 = 1;
+				int p = 2;
+				while (p < number)
+				{
+					pow2++;
+					p *= 2;
+				}
+				for (int i = 0; i < number; i++)
+				{
+					this->dataGridView1->Rows->Add(1);
+					int cur = i;
+					System::String^ s = L"";
+					while (cur > 0)
+					{
+						s = (cur % 2) + s;
+						cur /= 2;
+					}
+					while (s->Length < pow2)
+						s = 0 + s;
+					this->dataGridView1[1, i]->Value = s;
+					this->dataGridView1[0, i]->Value = i;
+				}
 			}
-			if(5 < numberOfMO)
-				this->dataGridView2->Size = System::Drawing::Size(20 + 5 * 2 * 100, 305);
-			else
-				this->dataGridView2->Size = System::Drawing::Size(20 + numberOfMO * 2 * 100, 305);
 		}
-		else
+		catch (...)
 		{
-			this->dataGridView2->Columns->Clear();
-			this->dataGridView2->Columns->Add(L"Column" + 1, L"Код");
-			this->dataGridView2->Columns->Add(L"Column" + 2, L"Y1");
-			this->dataGridView2->Size = System::Drawing::Size(240, 305);
+			this->richTextBox13->Visible = true;
+		}
+
+	}
+	private: System::Void richTextBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		this->richTextBox13->Visible = false;
+		try {
+			if (richTextBox4->Text != L"")
+			{
+				this->dataGridView2->Columns->Clear();
+				int numberOfMO = Convert::ToInt32(richTextBox4->Text);
+
+				this->dataGridView4->Columns->Clear();
+				int cntOfColumns = 0;
+				cntOfColumns++;
+				this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"Адрес");
+				for (int i = 0; i < numberOfMO; i++)
+				{
+					cntOfColumns++;
+					this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"Y" + (i + 1));
+				}
+				cntOfColumns++;
+				this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"x");
+				cntOfColumns++;
+				this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"i");
+				cntOfColumns++;
+				this->dataGridView4->Columns->Add(L"Column" + cntOfColumns, L"A1");
+				if (10 < numberOfMO)
+					this->dataGridView4->Size = System::Drawing::Size(20 + 10 * 100, 540);
+				else
+					this->dataGridView4->Size = System::Drawing::Size(20 + (numberOfMO + 4) * 100, 540);
+
+				if (this->richTextBox2->Text != L"")
+				{
+					int number = Int32::Parse(this->richTextBox2->Text);
+
+					this->dataGridView4->Rows->Clear();
+					this->dataGridView4->Rows->Add(number);
+					for (int i = 0; i < number; i++)
+					{
+						this->dataGridView4[0, i]->Value = i;
+					}
+				}
+
+				cntOfColumns = 0;
+				for (int i = 0; i < numberOfMO; i++)
+				{
+					cntOfColumns++;
+					this->dataGridView2->Columns->Add(L"Column" + cntOfColumns, L"Код");
+					cntOfColumns++;
+					this->dataGridView2->Columns->Add(L"Column" + cntOfColumns, L"Y" + (i + 1));
+				}
+				if (5 < numberOfMO)
+					this->dataGridView2->Size = System::Drawing::Size(20 + 5 * 2 * 100, 305);
+				else
+					this->dataGridView2->Size = System::Drawing::Size(20 + numberOfMO * 2 * 100, 305);
+			}
+			else
+			{
+				this->dataGridView2->Columns->Clear();
+				this->dataGridView2->Columns->Add(L"Column" + 1, L"Код");
+				this->dataGridView2->Columns->Add(L"Column" + 2, L"Y1");
+				this->dataGridView2->Size = System::Drawing::Size(220, 305);
+			}
+		}
+		catch (...)
+		{
+			this->richTextBox13->Visible = true;
 		}
 	}
 	private: System::Void richTextBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-
-		this->dataGridView3->Rows->Clear();
-		this->dataGridView5->Columns->Clear();
-		this->dataGridView5->Columns->Add(L"Column1", L"Такт");
-		if (this->richTextBox9->Text != L"")
-		{
-			int number = Convert::ToInt32(this->richTextBox9->Text);
-			this->dataGridView5->Rows->Add(number);
-			for (int i = 0; i < number; i++)
+		this->richTextBox13->Visible = false;
+		try {
+			this->dataGridView3->Rows->Clear();
+			this->dataGridView5->Columns->Clear();
+			this->dataGridView5->Columns->Add(L"Column1", L"Такт");
+			if (this->richTextBox9->Text != L"")
 			{
-				dataGridView5[0, i]->Value = i + 1;
+				int number = Convert::ToInt32(this->richTextBox9->Text);
+				this->dataGridView5->Rows->Add(number);
+				for (int i = 0; i < number; i++)
+				{
+					dataGridView5[0, i]->Value = i + 1;
+				}
+			}
+
+
+			if (this->richTextBox5->Text != L"")
+			{
+				int number = Int32::Parse(this->richTextBox5->Text);
+				if (4 < number + 1)
+					this->dataGridView5->Size = System::Drawing::Size(20 + 4 * 100, 540);
+				else
+					this->dataGridView5->Size = System::Drawing::Size(20 + (number + 1) * 100, 540);
+
+				int pow2 = 1;
+				int p = 2;
+				while (p < number + 2)
+				{
+					pow2++;
+					p *= 2;
+				}
+				for (int i = 0; i < number + 2; i++)
+				{
+					this->dataGridView3->Rows->Add(1);
+					int cur = i;
+					System::String^ s = L"";
+					while (cur > 0)
+					{
+						s = (cur % 2) + s;
+						cur /= 2;
+					}
+					while (s->Length < pow2)
+						s = 0 + s;
+					this->dataGridView3[0, i]->Value = s;
+					this->dataGridView3[1, i]->Value = L"x" + i;
+				}
+				this->dataGridView3[1, 0]->Value = L"Const 0";
+				this->dataGridView3[1, number + 1]->Value = L"Const 1";
 			}
 		}
-
-
-		if (this->richTextBox5->Text != L"")
+		catch (...)
 		{
-			int number = Int32::Parse(this->richTextBox5->Text);
-			if(4 < number + 1)
-				this->dataGridView5->Size = System::Drawing::Size(20 + 4*100, 540);
-			else
-				this->dataGridView5->Size = System::Drawing::Size(20 + (number + 1) * 100, 540);
-
-			int pow2 = 1;
-			int p = 2;
-			while (p < number + 2)
-			{
-				pow2++;
-				p *= 2;
-			}
-			for (int i = 0; i < number + 2; i++)
-			{
-				this->dataGridView3->Rows->Add(1);
-				int cur = i;
-				System::String^ s = L"";
-				while (cur > 0)
-				{
-					s = (cur % 2) + s;
-					cur /= 2;
-				}
-				while (s->Length < pow2)
-					s = 0 + s;
-				this->dataGridView3[0, i]->Value = s;
-				this->dataGridView3[1, i]->Value = L"x" + i;
-			}
-			this->dataGridView3[1, 0]->Value = L"Const 0";
-			this->dataGridView3[1, number + 1]->Value = L"Const 1";
+			this->richTextBox13->Visible = true;
 		}
 	}
 private: System::Void dataGridView3_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	if (this->richTextBox5->Text != L"")
-	{
-		int n = Convert::ToInt32(this->richTextBox5->Text);
-		for (int i = 1; i <= n; i++)
+	this->richTextBox13->Visible = false;
+	try {
+		if (this->richTextBox5->Text != L"")
 		{
-			this->dataGridView5[i, 0]->Value = this->dataGridView3[0, i]->Value;
+			int n = Convert::ToInt32(this->richTextBox5->Text);
+			for (int i = 1; i <= n; i++)
+			{
+				this->dataGridView5[i, 0]->Value = this->dataGridView3[0, i]->Value;
+			}
 		}
+	}
+	catch (...)
+	{
+		this->richTextBox13->Visible = true;
 	}
 }
 	   std::string ConvertToASCII(System::String^ _str)
@@ -707,177 +773,24 @@ private: System::Void dataGridView3_CellContentClick(System::Object^ sender, Sys
 
 	   //RUN
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->TextResult->Text = L"";
-	this->TextCurrentRes->Text = L"";
-	int numberrOfMC = Convert::ToInt32(richTextBox2->Text);
-	int numberOfLC = Convert::ToInt32(richTextBox5->Text);
-	int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
-	int numberOfTacts = Convert::ToInt32(richTextBox9->Text);
-
-	//считываем таблицу микрокоманд
-	std::map<std::string, int> mcMap;
-	for (int i = 0; i < numberrOfMC; i++)
-	{
-		System::String^ s1 = Convert::ToString(this->dataGridView1[1, i]->Value);
-		std::string s = ConvertToASCII(s1);
-		mcMap[s] = i;
-	}
-
-	//считываем таблицу логических условий
-	std::map<std::string, int> LogicalConditions;
-	for (int i = 0; i <= numberOfLC + 1; i++)
-	{
-		System::String^ s1 = Convert::ToString(dataGridView3[0, i]->Value);
-		std::string s = ConvertToASCII(s1);
-		LogicalConditions[s] = i;
-	}
-
-	//считываем таблицу микроопераций
-	std::vector<MicroOperation> microOperation;
-	int numberOfRows = this->dataGridView2->Rows->Count;
-	for (int i = 0; i < numberOfSetsYi; i ++)
-	{
-		for (int j = 0; j < numberOfRows; j++)
+	this->richTextBox13->Visible = false;
+	try {
+		int numberrOfMC = Convert::ToInt32(richTextBox2->Text);
+		for (int i = 0; i < numberrOfMC; i++)
 		{
-			if (Convert::ToString(dataGridView2[i * 2, j]->Value) != L"")
-			{
-				std::string s1 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2, j]->Value));
-				std::string s2 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2 + 1, j]->Value));
-				if (s1 != "")
-				{
-					MicroOperation cur(s1, s2, i + 1);
-					microOperation.push_back(cur);
-				}
-			}
+			this->dataGridView4[0, i]->Style->BackColor = System::Drawing::Color::FromArgb(255, 255, 255);
 		}
-	}
-	
-	//считываем таблицу значений лог. условий на каждом такте
-	std::vector<std::vector<std::pair<int, bool>>> logicalValues(numberOfTacts);
-	for (int i = 0; i < numberOfTacts; i++)
-	{
-		std::pair<int, bool> cur;
-		cur.first = 0;
-		cur.second = 0;
-		logicalValues[i].push_back(cur);
-
-
-		for (int j = 0; j < numberOfLC; j++)
-		{
-			cur.first = j + 1;
-			if (Convert::ToString(dataGridView5[j + 1, i]->Value) == L"1")
-				cur.second = 1;
-			else
-				cur.second = 0;
-			logicalValues[i].push_back(cur);
-		}
-
-		cur.first = numberOfLC + 1;
-		cur.second = 1;
-		logicalValues[i].push_back(cur);
-	}
-
-	MicroProgramm programm;
-	programm.valuesOfXi = logicalValues;
-	programm.numberOfSetsYi = numberOfSetsYi;
-	programm.numberOfCommands = numberrOfMC;
-	programm.microOperations = microOperation;
-	programm.logicalConditions = LogicalConditions;
-
-	//считываем таблицу микропрограммы
-	std::vector<MicroCommand> prog(numberrOfMC);
-	int ind = numberOfSetsYi + 1;
-	for (int i = 0; i < numberrOfMC; i++)
-	{
-		System::String^ s = Convert::ToString(dataGridView4[ind, i]->Value);
-		prog[i].x = LogicalConditions[ConvertToASCII(s)];
-
-		if (Convert::ToString(dataGridView4[ind + 1, i]->Value) == L"1")
-			prog[i].i = 1;
-		else
-			prog[i].i = 0;
-
-		s = Convert::ToString(dataGridView4[ind + 2, i]->Value);
-		if (s == L"xxxx")
-			prog[i].A1 = -1;
-		else
-			prog[i].A1 = mcMap[ConvertToASCII(s)];
-
-		for (int j = 1; j <= numberOfSetsYi; j++)
-		{
-			s = Convert::ToString(dataGridView4[j, i]->Value);
-			for (int k = 0; k < microOperation.size(); k++)
-			{
-				if (microOperation[k].setYi == j && microOperation[k].code == ConvertToASCII(s))
-				{
-					prog[i].microOperations.push_back(microOperation[k]);
-					break;
-				}
-			}
-		}
-	}
-	programm.microCommands = prog;
-
-	std::vector<int> res = programm.Modeling(numberOfTacts);
-	System::String^ result = L"";
-	for (int i = 0; i < res.size(); i++)
-	{
-		if (result != L"")
-			result += L"; ";
-		result += gcnew String(prog[res[i]].microOperations[0].yi.c_str());
-		for (int j = 1; j < numberOfSetsYi; j++)
-		{
-			result += L", " + gcnew String(prog[res[i]].microOperations[j].yi.c_str());
-		}
-	}
-	
-	this->TextResult->Text = result;
-	
-}
-
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->richTextBox12->Visible = true;
-	this->currentStep = 0;
-	this->currentTact = 0;
-	this->button1->Visible = false;
-	this->button3->Visible = true;
-	this->TextResult->Text = L"";
-	this->TextCurrentRes->Text = L"";
-}
-private: System::Void richTextBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	this->dataGridView5->Rows->Clear();
-	this->dataGridView5->Columns->Clear();
-	this->dataGridView5->Columns->Add(L"0", L"Такт");
-	if (this->richTextBox9->Text != L"")
-	{
-		int number = Convert::ToInt32(richTextBox5->Text);
-		for (int i = 0; i < number; i++)
-		{
-			this->dataGridView5->Columns->Add(L"Column" + (i + 1), L"x" + (i + 1));
-		}
-		number = Convert::ToInt32(this->richTextBox9->Text);
-		this->dataGridView5->Rows->Add(number);
-		for (int i = 0; i < number; i++)
-		{
-			dataGridView5[0, i]->Value = i + 1;
-		}
-	}
-}
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->TextCurrentRes->Text = L"";
-	int numberrOfMC = Convert::ToInt32(richTextBox2->Text);
-	int numberOfLC = Convert::ToInt32(richTextBox5->Text);
-	int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
-	int numberOfTacts = Convert::ToInt32(richTextBox9->Text);
-	if (currentStep == -1 || currentStep == numberrOfMC || currentTact == numberOfTacts)
-	{
-		this->button3->Visible = false;
-		this->TextCurrentRes->Text = L"";
-		this->button1->Visible = true;
 		this->richTextBox12->Visible = false;
-	}
-	else
-	{
+		this->button3->Visible = false;
+		this->currentStep = 0;
+		this->currentTact = 0;
+		this->TextResult->Text = L"";
+		this->TextCurrentRes->Text = L"";
+
+		int numberOfLC = Convert::ToInt32(richTextBox5->Text);
+		int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
+		int numberOfTacts = Convert::ToInt32(richTextBox9->Text);
+
 		//считываем таблицу микрокоманд
 		std::map<std::string, int> mcMap;
 		for (int i = 0; i < numberrOfMC; i++)
@@ -981,28 +894,251 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			}
 		}
 		programm.microCommands = prog;
-		System::String^ result = L"";
-		System::String^ curRes = L"";
-		if (result != L"")
-			result += L"; ";
-		result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
-		curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
-		for (int j = 1; j < numberOfSetsYi; j++)
-		{
-			result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
-			curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
-		}
-		this->TextCurrentRes->Text = curRes;
 
-		if (this->TextResult->Text != L"")
-			this->TextResult->Text += L"; ";
-		this->TextResult->Text += result;
-		if (prog[currentStep].i != programm.valuesOfXi[currentTact][programm.microCommands[currentStep].x].second)
-			currentStep = programm.microCommands[currentStep].A1;
-		else
-			currentStep++;
-		currentTact++;
+		std::vector<int> res = programm.Modeling(numberOfTacts);
+		System::String^ result = L"";
+		for (int i = 0; i < res.size(); i++)
+		{
+			if (result != L"")
+				result += L"; ";
+			result += gcnew String(prog[res[i]].microOperations[0].yi.c_str());
+			for (int j = 1; j < numberOfSetsYi; j++)
+			{
+				result += L", " + gcnew String(prog[res[i]].microOperations[j].yi.c_str());
+			}
+		}
+
+		this->TextResult->Text = result;
 	}
+	catch (...)
+	{
+		this->richTextBox13->Visible = true;
+	}
+}
+
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->richTextBox13->Visible = false;
+	try {
+		int numberrOfMC = Convert::ToInt32(richTextBox2->Text);
+		for (int i = 0; i < numberrOfMC; i++)
+		{
+			this->dataGridView4[0, i]->Style->BackColor = System::Drawing::Color::FromArgb(255, 255, 255);
+		}
+		this->richTextBox12->Visible = true;
+		this->currentStep = 0;
+		this->currentTact = 0;
+		this->button3->Visible = true;
+		this->TextResult->Text = L"";
+		this->TextCurrentRes->Text = L"";
+	}
+	catch (...)
+	{
+		this->richTextBox13->Visible = true;
+	}
+}
+private: System::Void richTextBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	this->richTextBox13->Visible = false;
+	try {
+		this->dataGridView5->Rows->Clear();
+		this->dataGridView5->Columns->Clear();
+		this->dataGridView5->Columns->Add(L"0", L"Такт");
+		if (this->richTextBox9->Text != L"")
+		{
+			int number = Convert::ToInt32(richTextBox5->Text);
+			for (int i = 0; i < number; i++)
+			{
+				this->dataGridView5->Columns->Add(L"Column" + (i + 1), L"x" + (i + 1));
+			}
+			number = Convert::ToInt32(this->richTextBox9->Text);
+			this->dataGridView5->Rows->Add(number);
+			for (int i = 0; i < number; i++)
+			{
+				dataGridView5[0, i]->Value = i + 1;
+			}
+		}
+	}
+	catch (...)
+	{
+		this->richTextBox13->Visible = true;
+	}
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->richTextBox13->Visible = false;
+	try {
+		this->TextCurrentRes->Text = L"";
+		int numberrOfMC = Convert::ToInt32(richTextBox2->Text);
+		int numberOfLC = Convert::ToInt32(richTextBox5->Text);
+		int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
+		int numberOfTacts = Convert::ToInt32(richTextBox9->Text);
+		if (currentStep == -1 || currentStep == numberrOfMC || currentTact == numberOfTacts)
+		{
+			this->button3->Visible = false;
+			this->TextCurrentRes->Text = L"";
+			this->button1->Visible = true;
+			this->richTextBox12->Visible = false;
+
+			for (int i = 0; i < numberrOfMC; i++)
+			{
+				this->dataGridView4[0, i]->Style->BackColor = System::Drawing::Color::FromArgb(255, 255, 255);
+			}
+		}
+		else
+		{
+			//считываем таблицу микрокоманд
+			std::map<std::string, int> mcMap;
+			for (int i = 0; i < numberrOfMC; i++)
+			{
+				System::String^ s1 = Convert::ToString(this->dataGridView1[1, i]->Value);
+				std::string s = ConvertToASCII(s1);
+				mcMap[s] = i;
+			}
+
+			//считываем таблицу логических условий
+			std::map<std::string, int> LogicalConditions;
+			for (int i = 0; i <= numberOfLC + 1; i++)
+			{
+				System::String^ s1 = Convert::ToString(dataGridView3[0, i]->Value);
+				std::string s = ConvertToASCII(s1);
+				LogicalConditions[s] = i;
+			}
+
+			//считываем таблицу микроопераций
+			std::vector<MicroOperation> microOperation;
+			int numberOfRows = this->dataGridView2->Rows->Count;
+			for (int i = 0; i < numberOfSetsYi; i++)
+			{
+				for (int j = 0; j < numberOfRows; j++)
+				{
+					if (Convert::ToString(dataGridView2[i * 2, j]->Value) != L"")
+					{
+						std::string s1 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2, j]->Value));
+						std::string s2 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2 + 1, j]->Value));
+						if (s1 != "")
+						{
+							MicroOperation cur(s1, s2, i + 1);
+							microOperation.push_back(cur);
+						}
+					}
+				}
+			}
+
+			//считываем таблицу значений лог. условий на каждом такте
+			std::vector<std::vector<std::pair<int, bool>>> logicalValues(numberOfTacts);
+			for (int i = 0; i < numberOfTacts; i++)
+			{
+				std::pair<int, bool> cur;
+				cur.first = 0;
+				cur.second = 0;
+				logicalValues[i].push_back(cur);
+
+
+				for (int j = 0; j < numberOfLC; j++)
+				{
+					cur.first = j + 1;
+					if (Convert::ToString(dataGridView5[j + 1, i]->Value) == L"1")
+						cur.second = 1;
+					else
+						cur.second = 0;
+					logicalValues[i].push_back(cur);
+				}
+
+				cur.first = numberOfLC + 1;
+				cur.second = 1;
+				logicalValues[i].push_back(cur);
+			}
+
+			MicroProgramm programm;
+			programm.valuesOfXi = logicalValues;
+			programm.numberOfSetsYi = numberOfSetsYi;
+			programm.numberOfCommands = numberrOfMC;
+			programm.microOperations = microOperation;
+			programm.logicalConditions = LogicalConditions;
+
+			//считываем таблицу микропрограммы
+			std::vector<MicroCommand> prog(numberrOfMC);
+			int ind = numberOfSetsYi + 1;
+			for (int i = 0; i < numberrOfMC; i++)
+			{
+				System::String^ s = Convert::ToString(dataGridView4[ind, i]->Value);
+				prog[i].x = LogicalConditions[ConvertToASCII(s)];
+
+				if (Convert::ToString(dataGridView4[ind + 1, i]->Value) == L"1")
+					prog[i].i = 1;
+				else
+					prog[i].i = 0;
+
+				s = Convert::ToString(dataGridView4[ind + 2, i]->Value);
+				if (s == L"xxxx")
+					prog[i].A1 = -1;
+				else
+					prog[i].A1 = mcMap[ConvertToASCII(s)];
+
+				for (int j = 1; j <= numberOfSetsYi; j++)
+				{
+					s = Convert::ToString(dataGridView4[j, i]->Value);
+					for (int k = 0; k < microOperation.size(); k++)
+					{
+						if (microOperation[k].setYi == j && microOperation[k].code == ConvertToASCII(s))
+						{
+							prog[i].microOperations.push_back(microOperation[k]);
+							break;
+						}
+					}
+				}
+			}
+			programm.microCommands = prog;
+			System::String^ result = L"";
+			System::String^ curRes = L"";
+			if (result != L"")
+				result += L"; ";
+			result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+			curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+			for (int j = 1; j < numberOfSetsYi; j++)
+			{
+				result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+				curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+			}
+			this->TextCurrentRes->Text = curRes;
+
+			for (int i = 0; i < numberrOfMC; i++)
+			{
+				this->dataGridView4[0, i]->Style->BackColor = System::Drawing::Color::FromArgb(255, 255, 255);
+			}
+
+			this->dataGridView4[0, currentStep]->Style->BackColor = System::Drawing::Color::FromArgb(255, 0, 0);
+			if (this->TextResult->Text != L"")
+				this->TextResult->Text += L"; ";
+			this->TextResult->Text += result;
+			if (prog[currentStep].A1 == -1)
+				currentStep = -1;
+			else if (prog[currentStep].i != programm.valuesOfXi[currentTact][programm.microCommands[currentStep].x].second)
+				currentStep = programm.microCommands[currentStep].A1;
+			else
+				currentStep++;
+			currentTact++;
+		}
+	}
+	catch (...)
+	{
+		this->richTextBox13->Visible = true;
+	}
+}
+private: System::Void dataGridView5_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->richTextBox13->Visible = false;
+	this->richTextBox2->Clear();
+	this->richTextBox5->Clear();
+	this->richTextBox4->Clear();
+	this->richTextBox9->Clear();
+	this->TextResult->Clear();
+	this->TextCurrentRes->Clear();
+	this->dataGridView1->Rows->Clear();
+	this->dataGridView2->Rows->Clear();
+	this->dataGridView3->Rows->Clear();
+	this->dataGridView5->Rows->Clear();
+	this->dataGridView4->Rows->Clear();
+	this->button3->Visible=false;
 }
 };
 }
