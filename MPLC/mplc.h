@@ -80,6 +80,8 @@ namespace MPLC {
 		   int currentTact = 0;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::RichTextBox^ richTextBox13;
+	private: System::Windows::Forms::RichTextBox^ richTextBox14;
+	private: System::Windows::Forms::RichTextBox^ richTextBox15;
 
 
 
@@ -137,6 +139,8 @@ namespace MPLC {
 			this->TextCurrentRes = (gcnew System::Windows::Forms::RichTextBox());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->richTextBox13 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox14 = (gcnew System::Windows::Forms::RichTextBox());
+			this->richTextBox15 = (gcnew System::Windows::Forms::RichTextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
@@ -450,7 +454,7 @@ namespace MPLC {
 			this->richTextBox11->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->richTextBox11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBox11->Location = System::Drawing::Point(1040, 376);
+			this->richTextBox11->Location = System::Drawing::Point(1040, 410);
 			this->richTextBox11->Name = L"richTextBox11";
 			this->richTextBox11->ReadOnly = true;
 			this->richTextBox11->Size = System::Drawing::Size(102, 25);
@@ -462,7 +466,7 @@ namespace MPLC {
 			this->TextResult->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->TextResult->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TextResult->Location = System::Drawing::Point(1148, 376);
+			this->TextResult->Location = System::Drawing::Point(1148, 410);
 			this->TextResult->Name = L"TextResult";
 			this->TextResult->ReadOnly = true;
 			this->TextResult->Size = System::Drawing::Size(744, 25);
@@ -475,20 +479,21 @@ namespace MPLC {
 			this->richTextBox12->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->richTextBox12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->richTextBox12->Location = System::Drawing::Point(977, 407);
+			this->richTextBox12->Location = System::Drawing::Point(979, 441);
 			this->richTextBox12->Name = L"richTextBox12";
 			this->richTextBox12->ReadOnly = true;
 			this->richTextBox12->Size = System::Drawing::Size(165, 25);
 			this->richTextBox12->TabIndex = 20;
 			this->richTextBox12->Text = L"Текущее значение";
 			this->richTextBox12->Visible = false;
+			this->richTextBox12->TextChanged += gcnew System::EventHandler(this, &mplc::richTextBox12_TextChanged);
 			// 
 			// TextCurrentRes
 			// 
 			this->TextCurrentRes->BorderStyle = System::Windows::Forms::BorderStyle::None;
 			this->TextCurrentRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->TextCurrentRes->Location = System::Drawing::Point(1148, 410);
+			this->TextCurrentRes->Location = System::Drawing::Point(1150, 441);
 			this->TextCurrentRes->Name = L"TextCurrentRes";
 			this->TextCurrentRes->ReadOnly = true;
 			this->TextCurrentRes->Size = System::Drawing::Size(744, 25);
@@ -519,12 +524,40 @@ namespace MPLC {
 			this->richTextBox13->Text = L"Некорректно введенные данные";
 			this->richTextBox13->Visible = false;
 			// 
+			// richTextBox14
+			// 
+			this->richTextBox14->BackColor = System::Drawing::SystemColors::Info;
+			this->richTextBox14->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->richTextBox14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->richTextBox14->Location = System::Drawing::Point(875, 376);
+			this->richTextBox14->Name = L"richTextBox14";
+			this->richTextBox14->ReadOnly = true;
+			this->richTextBox14->Size = System::Drawing::Size(267, 25);
+			this->richTextBox14->TabIndex = 24;
+			this->richTextBox14->Text = L"Последовательность адресов";
+			// 
+			// richTextBox15
+			// 
+			this->richTextBox15->BackColor = System::Drawing::SystemColors::Menu;
+			this->richTextBox15->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->richTextBox15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->richTextBox15->Location = System::Drawing::Point(1150, 376);
+			this->richTextBox15->Name = L"richTextBox15";
+			this->richTextBox15->ReadOnly = true;
+			this->richTextBox15->Size = System::Drawing::Size(742, 25);
+			this->richTextBox15->TabIndex = 25;
+			this->richTextBox15->Text = L"";
+			// 
 			// mplc
 			// 
 			this->AccessibleRole = System::Windows::Forms::AccessibleRole::MenuBar;
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1904, 1041);
+			this->Controls->Add(this->richTextBox15);
+			this->Controls->Add(this->richTextBox14);
 			this->Controls->Add(this->richTextBox13);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->TextCurrentRes);
@@ -571,6 +604,10 @@ namespace MPLC {
 	}
 	private: System::Void richTextBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		this->richTextBox13->Visible = false;
+		this->button3->Visible = false;
+		this->richTextBox15->Clear();
+		this->TextResult->Clear();
+		this->TextCurrentRes->Clear();
 		try {
 			this->dataGridView1->Rows->Clear();
 			if (this->richTextBox2->Text != L"")
@@ -616,6 +653,10 @@ namespace MPLC {
 	}
 	private: System::Void richTextBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		this->richTextBox13->Visible = false;
+		this->button3->Visible = false;
+		this->richTextBox15->Clear();
+		this->TextResult->Clear();
+		this->TextCurrentRes->Clear();
 		try {
 			if (richTextBox4->Text != L"")
 			{
@@ -682,6 +723,10 @@ namespace MPLC {
 	}
 	private: System::Void richTextBox5_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		this->richTextBox13->Visible = false;
+		this->button3->Visible = false;
+		this->richTextBox15->Clear();
+		this->TextResult->Clear();
+		this->TextCurrentRes->Clear();
 		try {
 			this->dataGridView3->Rows->Clear();
 			this->dataGridView5->Columns->Clear();
@@ -738,6 +783,9 @@ namespace MPLC {
 	}
 private: System::Void dataGridView3_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	this->richTextBox13->Visible = false;
+	this->richTextBox15->Clear();
+	this->TextResult->Clear();
+	this->TextCurrentRes->Clear();
 	try {
 		if (this->richTextBox5->Text != L"")
 		{
@@ -787,7 +835,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		this->currentTact = 0;
 		this->TextResult->Text = L"";
 		this->TextCurrentRes->Text = L"";
-
+		this->richTextBox15->Text = L"";
 		int numberOfLC = Convert::ToInt32(richTextBox5->Text);
 		int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
 		int numberOfTacts = Convert::ToInt32(richTextBox9->Text);
@@ -898,18 +946,23 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 
 		std::vector<int> res = programm.Modeling(numberOfTacts);
 		System::String^ result = L"";
+		System::String^ ai = L"";
 		for (int i = 0; i < res.size(); i++)
 		{
 			if (result != L"")
 				result += L"; ";
+			if (ai != L"")
+				ai += L"; ";
 			result += gcnew String(prog.at(res.at(i)).microOperations.at(0).yi.c_str());
 			for (int j = 1; j < numberOfSetsYi; j++)
 			{
 				result += L", " + gcnew String(prog.at(res.at(i)).microOperations.at(j).yi.c_str());
 			}
+			ai += res[i];
 		}
 
 		this->TextResult->Text = result;
+		this->richTextBox15->Text = ai;
 	}
 	catch (...)
 	{
@@ -928,9 +981,11 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 		this->richTextBox12->Visible = true;
 		this->currentStep = 0;
 		this->currentTact = 0;
+		this->dataGridView4[0, currentStep]->Style->BackColor = System::Drawing::Color::FromArgb(255, 0, 0);
 		this->button3->Visible = true;
-		this->TextResult->Text = L"";
-		this->TextCurrentRes->Text = L"";
+		this->richTextBox15->Clear();
+		this->TextResult->Clear();
+		this->TextCurrentRes->Clear();
 	}
 	catch (...)
 	{
@@ -938,6 +993,10 @@ private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e
 	}
 }
 private: System::Void richTextBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	this->richTextBox15->Clear();
+	this->TextResult->Clear();
+	this->button3->Visible = false;
+	this->TextCurrentRes->Clear();
 	this->richTextBox13->Visible = false;
 	try {
 		this->dataGridView5->Rows->Clear();
@@ -1088,35 +1147,62 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 				}
 			}
 			programm.microCommands = prog;
-			System::String^ result = L"";
-			System::String^ curRes = L"";
-			if (result != L"")
-				result += L"; ";
-			result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
-			curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
-			for (int j = 1; j < numberOfSetsYi; j++)
-			{
-				result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
-				curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
-			}
-			this->TextCurrentRes->Text = curRes;
+			
 
 			for (int i = 0; i < numberrOfMC; i++)
 			{
 				this->dataGridView4[0, i]->Style->BackColor = System::Drawing::Color::FromArgb(255, 255, 255);
 			}
 
-			this->dataGridView4[0, currentStep]->Style->BackColor = System::Drawing::Color::FromArgb(255, 0, 0);
-			if (this->TextResult->Text != L"")
-				this->TextResult->Text += L"; ";
-			this->TextResult->Text += result;
+
+			//для 0
+			if (this->richTextBox15->Text == L"")
+			{
+				richTextBox15->Text += 0;
+
+				System::String^ result = L"";
+				System::String^ curRes = L"";
+				result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+				curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+				for (int j = 1; j < numberOfSetsYi; j++)
+				{
+					result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+					curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+				}
+				this->TextCurrentRes->Text = curRes;
+				this->TextResult->Text += result;
+			}
+
+
 			if (prog[currentStep].A1 == -1)
-				currentStep = -1;
+				currentStep = -2;
 			else if (prog.at(currentStep).i != programm.valuesOfXi.at(currentTact).at(programm.microCommands.at(currentStep).x).second)
 				currentStep = programm.microCommands.at(currentStep).A1;
 			else
 				currentStep++;
 			currentTact++;
+
+			if (currentStep >= 0)
+			{
+				this->dataGridView4[0, currentStep]->Style->BackColor = System::Drawing::Color::FromArgb(255, 0, 0);
+				if (this->TextResult->Text != L"")
+					this->TextResult->Text += L"; ";
+				if (this->richTextBox15->Text != L"")
+					this->richTextBox15->Text += L"; ";
+				this->richTextBox15->Text += currentStep;
+
+				System::String^ result = L"";
+				System::String^ curRes = L"";
+				result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+				curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+				for (int j = 1; j < numberOfSetsYi; j++)
+				{
+					result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+					curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+				}
+				this->TextCurrentRes->Text = curRes;
+				this->TextResult->Text += result;
+			}
 		}
 	}
 	catch (...)
@@ -1132,6 +1218,7 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	this->richTextBox5->Clear();
 	this->richTextBox4->Clear();
 	this->richTextBox9->Clear();
+	this->richTextBox15->Clear();
 	this->TextResult->Clear();
 	this->TextCurrentRes->Clear();
 	this->dataGridView1->Rows->Clear();
@@ -1140,6 +1227,8 @@ private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e
 	this->dataGridView5->Rows->Clear();
 	this->dataGridView4->Rows->Clear();
 	this->button3->Visible=false;
+}
+private: System::Void richTextBox12_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }
