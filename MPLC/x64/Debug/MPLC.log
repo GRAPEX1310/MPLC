@@ -1,5 +1,5 @@
 ﻿  mplc.cpp
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(559,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(666,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(564,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(671,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
   MicroCommand.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   MPLC.vcxproj -> C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\x64\Debug\MPLC.exe

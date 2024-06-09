@@ -75,6 +75,8 @@ namespace MPLC {
 	private: System::Windows::Forms::RichTextBox^ TextResult;
 	private: System::Windows::Forms::RichTextBox^ richTextBox12;
 	private: System::Windows::Forms::RichTextBox^ TextCurrentRes;
+		   int currentStep = 0;
+		   int currentTact = 0;
 
 	private:
 		/// <summary>
@@ -396,6 +398,7 @@ namespace MPLC {
 			this->button3->Text = L"Step";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Visible = false;
+			this->button3->Click += gcnew System::EventHandler(this, &mplc::button3_Click);
 			// 
 			// dataGridView5
 			// 
@@ -471,6 +474,8 @@ namespace MPLC {
 			// TextCurrentRes
 			// 
 			this->TextCurrentRes->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->TextCurrentRes->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->TextCurrentRes->Location = System::Drawing::Point(1042, 410);
 			this->TextCurrentRes->Name = L"TextCurrentRes";
 			this->TextCurrentRes->ReadOnly = true;
@@ -702,6 +707,8 @@ private: System::Void dataGridView3_CellContentClick(System::Object^ sender, Sys
 
 	   //RUN
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->TextResult->Text = L"";
+	this->TextCurrentRes->Text = L"";
 	int numberrOfMC = Convert::ToInt32(richTextBox2->Text);
 	int numberOfLC = Convert::ToInt32(richTextBox5->Text);
 	int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
@@ -728,14 +735,14 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 	//считываем таблицу микроопераций
 	std::vector<MicroOperation> microOperation;
 	int numberOfRows = this->dataGridView2->Rows->Count;
-	for (int i = 0; i < numberOfSetsYi; i += 2)
+	for (int i = 0; i < numberOfSetsYi; i ++)
 	{
 		for (int j = 0; j < numberOfRows; j++)
 		{
-			if (Convert::ToString(dataGridView2[i, j]->Value) != L"")
+			if (Convert::ToString(dataGridView2[i * 2, j]->Value) != L"")
 			{
-				std::string s1 = ConvertToASCII(Convert::ToString(dataGridView2[i, j]->Value));
-				std::string s2 = ConvertToASCII(Convert::ToString(dataGridView2[i + 1, j]->Value));
+				std::string s1 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2, j]->Value));
+				std::string s2 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2 + 1, j]->Value));
 				if (s1 != "")
 				{
 					MicroOperation cur(s1, s2, i + 1);
@@ -829,8 +836,13 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 }
 
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->richTextBox12->Visible = true;
+	this->currentStep = 0;
+	this->currentTact = 0;
 	this->button1->Visible = false;
 	this->button3->Visible = true;
+	this->TextResult->Text = L"";
+	this->TextCurrentRes->Text = L"";
 }
 private: System::Void richTextBox9_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 	this->dataGridView5->Rows->Clear();
@@ -849,6 +861,147 @@ private: System::Void richTextBox9_TextChanged(System::Object^ sender, System::E
 		{
 			dataGridView5[0, i]->Value = i + 1;
 		}
+	}
+}
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->TextCurrentRes->Text = L"";
+	int numberrOfMC = Convert::ToInt32(richTextBox2->Text);
+	int numberOfLC = Convert::ToInt32(richTextBox5->Text);
+	int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
+	int numberOfTacts = Convert::ToInt32(richTextBox9->Text);
+	if (currentStep == -1 || currentStep == numberrOfMC || currentTact == numberOfTacts)
+	{
+		this->button3->Visible = false;
+		this->TextCurrentRes->Text = L"";
+		this->button1->Visible = true;
+		this->richTextBox12->Visible = false;
+	}
+	else
+	{
+		//считываем таблицу микрокоманд
+		std::map<std::string, int> mcMap;
+		for (int i = 0; i < numberrOfMC; i++)
+		{
+			System::String^ s1 = Convert::ToString(this->dataGridView1[1, i]->Value);
+			std::string s = ConvertToASCII(s1);
+			mcMap[s] = i;
+		}
+
+		//считываем таблицу логических условий
+		std::map<std::string, int> LogicalConditions;
+		for (int i = 0; i <= numberOfLC + 1; i++)
+		{
+			System::String^ s1 = Convert::ToString(dataGridView3[0, i]->Value);
+			std::string s = ConvertToASCII(s1);
+			LogicalConditions[s] = i;
+		}
+
+		//считываем таблицу микроопераций
+		std::vector<MicroOperation> microOperation;
+		int numberOfRows = this->dataGridView2->Rows->Count;
+		for (int i = 0; i < numberOfSetsYi; i++)
+		{
+			for (int j = 0; j < numberOfRows; j++)
+			{
+				if (Convert::ToString(dataGridView2[i * 2, j]->Value) != L"")
+				{
+					std::string s1 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2, j]->Value));
+					std::string s2 = ConvertToASCII(Convert::ToString(dataGridView2[i * 2 + 1, j]->Value));
+					if (s1 != "")
+					{
+						MicroOperation cur(s1, s2, i + 1);
+						microOperation.push_back(cur);
+					}
+				}
+			}
+		}
+
+		//считываем таблицу значений лог. условий на каждом такте
+		std::vector<std::vector<std::pair<int, bool>>> logicalValues(numberOfTacts);
+		for (int i = 0; i < numberOfTacts; i++)
+		{
+			std::pair<int, bool> cur;
+			cur.first = 0;
+			cur.second = 0;
+			logicalValues[i].push_back(cur);
+
+
+			for (int j = 0; j < numberOfLC; j++)
+			{
+				cur.first = j + 1;
+				if (Convert::ToString(dataGridView5[j + 1, i]->Value) == L"1")
+					cur.second = 1;
+				else
+					cur.second = 0;
+				logicalValues[i].push_back(cur);
+			}
+
+			cur.first = numberOfLC + 1;
+			cur.second = 1;
+			logicalValues[i].push_back(cur);
+		}
+
+		MicroProgramm programm;
+		programm.valuesOfXi = logicalValues;
+		programm.numberOfSetsYi = numberOfSetsYi;
+		programm.numberOfCommands = numberrOfMC;
+		programm.microOperations = microOperation;
+		programm.logicalConditions = LogicalConditions;
+
+		//считываем таблицу микропрограммы
+		std::vector<MicroCommand> prog(numberrOfMC);
+		int ind = numberOfSetsYi + 1;
+		for (int i = 0; i < numberrOfMC; i++)
+		{
+			System::String^ s = Convert::ToString(dataGridView4[ind, i]->Value);
+			prog[i].x = LogicalConditions[ConvertToASCII(s)];
+
+			if (Convert::ToString(dataGridView4[ind + 1, i]->Value) == L"1")
+				prog[i].i = 1;
+			else
+				prog[i].i = 0;
+
+			s = Convert::ToString(dataGridView4[ind + 2, i]->Value);
+			if (s == L"xxxx")
+				prog[i].A1 = -1;
+			else
+				prog[i].A1 = mcMap[ConvertToASCII(s)];
+
+			for (int j = 1; j <= numberOfSetsYi; j++)
+			{
+				s = Convert::ToString(dataGridView4[j, i]->Value);
+				for (int k = 0; k < microOperation.size(); k++)
+				{
+					if (microOperation[k].setYi == j && microOperation[k].code == ConvertToASCII(s))
+					{
+						prog[i].microOperations.push_back(microOperation[k]);
+						break;
+					}
+				}
+			}
+		}
+		programm.microCommands = prog;
+		System::String^ result = L"";
+		System::String^ curRes = L"";
+		if (result != L"")
+			result += L"; ";
+		result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+		curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+		for (int j = 1; j < numberOfSetsYi; j++)
+		{
+			result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+			curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+		}
+		this->TextCurrentRes->Text = curRes;
+
+		if (this->TextResult->Text != L"")
+			this->TextResult->Text += L"; ";
+		this->TextResult->Text += result;
+		if (prog[currentStep].i != programm.valuesOfXi[currentTact][programm.microCommands[currentStep].x].second)
+			currentStep = programm.microCommands[currentStep].A1;
+		else
+			currentStep++;
+		currentTact++;
 	}
 }
 };
