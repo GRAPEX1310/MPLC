@@ -1094,6 +1094,8 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			this->button1->Visible = true;
 			this->richTextBox12->Visible = false;
 			this->TextCurrentRes->Visible = false;
+			this->currentStep = 0;
+			this->currentTact = 0;
 
 			for (int i = 0; i < numberrOfMC; i++)
 			{
@@ -1107,14 +1109,10 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			{
 				this->dataGridView4[0, i]->Style->BackColor = System::Drawing::Color::FromArgb(255, 255, 255);
 			}
-			this->richTextBox12->Visible = false;
-			this->TextCurrentRes->Visible = false;
-			this->button3->Visible = false;
-			this->currentStep = 0;
-			this->currentTact = 0;
-			this->TextResult->Text = L"";
+			this->richTextBox12->Visible = true;
+			this->TextCurrentRes->Visible = true;
+			this->button3->Visible = true;
 			this->TextCurrentRes->Text = L"";
-			this->richTextBox15->Text = L"";
 			
 
 			//считываем таблицу микрокоманд

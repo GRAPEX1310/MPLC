@@ -1,12 +1,17 @@
-﻿  MicroProgramm.cpp
+﻿  MicroCommand.cpp
+  MicroOperation.cpp
+  MicroProgramm.cpp
   mplc.cpp
 C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(691,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
 C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(827,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
 C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(866,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(880,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1217,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1302,31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1322,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1085,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1087,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1235,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1320,31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1340,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+  .NETFramework,Version=v4.6.1.AssemblyAttributes.cpp
   Generating Code...
   MicroCommand.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   MPLC.vcxproj -> C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\x64\Debug\MPLC.exe
