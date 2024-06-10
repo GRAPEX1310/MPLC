@@ -1030,7 +1030,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		int numberOfLC = Convert::ToInt32(richTextBox5->Text);
 		int numberOfSetsYi = Convert::ToInt32(richTextBox4->Text);
 		int numberOfTacts = Convert::ToInt32(richTextBox9->Text);
-		if (currentStep == -1 || currentStep == numberrOfMC || currentTact == numberOfTacts)
+		if (currentStep < 0 || currentStep >= numberrOfMC || currentTact == numberOfTacts)
 		{
 			this->button3->Visible = false;
 			this->TextCurrentRes->Text = L"";
