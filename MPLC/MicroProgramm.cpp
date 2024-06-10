@@ -7,8 +7,10 @@ std::vector<int> MicroProgramm::Modeling(int numberOfTacts)
 	int cur = 0;
 	int curTact = 0;
 	res.push_back(0);
-	while (cur < this->numberOfCommands && curTact < numberOfTacts && microCommands.at(cur).A1 != -1)
+	while (cur < this->numberOfCommands && curTact < numberOfTacts)
 	{
+		if (microCommands.at(cur).i == 0 && microCommands.at(cur).x == 0)
+			break;
 		if (microCommands.at(cur).i != this->valuesOfXi.at(curTact).at(microCommands.at(cur).x).second)
 			cur = microCommands.at(cur).A1;
 		else
