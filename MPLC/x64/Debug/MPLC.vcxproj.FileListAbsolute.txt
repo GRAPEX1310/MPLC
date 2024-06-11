@@ -1,2 +1,5 @@
 C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\x64\Debug\MPLC.mplc.resources
 C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\x64\Debug\MPLC.vcxproj.GenerateResource.cache
+C:\Users\artiu\Desktop\прогрм\MPLC\MPLC\x64\Debug\MPLC.vcxproj.AssemblyReference.cache
+C:\Users\artiu\Desktop\прогрм\MPLC\MPLC\x64\Debug\MPLC.mplc.resources
+C:\Users\artiu\Desktop\прогрм\MPLC\MPLC\x64\Debug\MPLC.vcxproj.GenerateResource.cache

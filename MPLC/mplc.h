@@ -721,6 +721,9 @@ namespace MPLC {
 			if (this->richTextBox2->Text != L"")
 			{
 				int step = Int32::Parse(this->richTextBox2->Text);
+				if (step > 10) {
+					throw "mis";
+				}
 				int number = 1;
 				for (int i = 0; i < step; i++)
 					number *= 2;
@@ -758,6 +761,7 @@ namespace MPLC {
 		}
 		catch (...)
 		{
+			this->richTextBox13->Text = L"Некорректно введенные данные";
 			this->richTextBox13->Visible = true;
 		}
 
@@ -776,7 +780,9 @@ namespace MPLC {
 			{
 				this->dataGridView2->Columns->Clear();
 				int numberOfMO = Convert::ToInt32(richTextBox4->Text);
-
+				if (numberOfMO > 100) {
+					throw "mis";
+				}
 				this->dataGridView6->Columns->Clear();
 				this->dataGridView6->Rows->Clear();
 				for (int i = 0; i < numberOfMO; i++)
@@ -843,6 +849,7 @@ namespace MPLC {
 		}
 		catch (...)
 		{
+			this->richTextBox13->Text = L"Некорректно введенные данные";
 			this->richTextBox13->Visible = true;
 		}
 	}
@@ -872,6 +879,9 @@ namespace MPLC {
 			if (this->richTextBox5->Text != L"")
 			{
 				int step = Int32::Parse(this->richTextBox5->Text);
+				if (step > 10) {
+					throw "mis";
+				}
 				int number = 1;
 				for (int i = 0; i < step; i++)
 					number *= 2;
@@ -1141,6 +1151,9 @@ private: System::Void richTextBox9_TextChanged(System::Object^ sender, System::E
 					this->dataGridView5->Columns->Add(L"Column" + (i + 1), Convert::ToString(dataGridView3[1, i + 1]->Value));
 			}
 			number = Convert::ToInt32(this->richTextBox9->Text);
+			if (number > 1000) {
+				throw "mis";
+			}
 			this->dataGridView5->Rows->Add(number);
 			for (int i = 0; i < number; i++)
 			{
@@ -1156,6 +1169,7 @@ private: System::Void richTextBox9_TextChanged(System::Object^ sender, System::E
 	}
 	catch (...)
 	{
+		this->richTextBox13->Text = L"Некорректно введенные данные";
 		this->richTextBox13->Visible = true;
 	}
 }
@@ -1409,9 +1423,14 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 		this->dataGridView2->Rows->Clear();
 		int numberOfColumns = this->dataGridView6->Columns->Count;
 		int mx = 0;
-		for (int i = 0; i < numberOfColumns; i++)
+		for (int i = 0; i < numberOfColumns; i++) {
+			int t = Convert::ToInt32(this->dataGridView6[i, 0]->Value);
+			if (t > 10) {
+				throw "mis";
+			}
 			mx = std::max(mx, Convert::ToInt32(this->dataGridView6[i, 0]->Value));
-
+			
+		}
 		dataGridView2->Rows->Add(pow(2, mx));
 		for (int i = 0; i < numberOfColumns; i++)
 		{
@@ -1447,6 +1466,7 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 	}
 	catch (...)
 	{
+		this->richTextBox13->Text = L"Некорректно введенные данные";
 		this->richTextBox13->Visible = true;
 	}
 }
