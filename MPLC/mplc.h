@@ -216,6 +216,7 @@ namespace MPLC {
 			this->richTextBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->richTextBox2->Location = System::Drawing::Point(128, 76);
+			this->richTextBox2->Multiline = false;
 			this->richTextBox2->Name = L"richTextBox2";
 			this->richTextBox2->Size = System::Drawing::Size(98, 35);
 			this->richTextBox2->TabIndex = 2;
@@ -240,6 +241,7 @@ namespace MPLC {
 			this->richTextBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->richTextBox4->Location = System::Drawing::Point(591, 76);
+			this->richTextBox4->Multiline = false;
 			this->richTextBox4->Name = L"richTextBox4";
 			this->richTextBox4->Size = System::Drawing::Size(87, 37);
 			this->richTextBox4->TabIndex = 4;
@@ -307,6 +309,7 @@ namespace MPLC {
 			this->richTextBox5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->richTextBox5->Location = System::Drawing::Point(389, 76);
+			this->richTextBox5->Multiline = false;
 			this->richTextBox5->Name = L"richTextBox5";
 			this->richTextBox5->Size = System::Drawing::Size(63, 35);
 			this->richTextBox5->TabIndex = 7;
@@ -400,6 +403,7 @@ namespace MPLC {
 			this->richTextBox9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->richTextBox9->Location = System::Drawing::Point(164, 444);
+			this->richTextBox9->Multiline = false;
 			this->richTextBox9->Name = L"richTextBox9";
 			this->richTextBox9->Size = System::Drawing::Size(84, 25);
 			this->richTextBox9->TabIndex = 12;
@@ -485,7 +489,7 @@ namespace MPLC {
 			// TextResult
 			// 
 			this->TextResult->BackColor = System::Drawing::SystemColors::ControlLightLight;
-			this->TextResult->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->TextResult->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->TextResult->Location = System::Drawing::Point(1153, 475);
 			this->TextResult->Name = L"TextResult";
@@ -560,7 +564,7 @@ namespace MPLC {
 			// richTextBox15
 			// 
 			this->richTextBox15->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->richTextBox15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->richTextBox15->Font = (gcnew System::Drawing::Font(L"Consolas", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->richTextBox15->Location = System::Drawing::Point(1155, 441);
 			this->richTextBox15->Name = L"richTextBox15";
@@ -996,7 +1000,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 			std::pair<int, bool> cur;
 			cur.first = 0;
 			cur.second = 0;
-			logicalValues[i].push_back(cur);
+			logicalValues.at(i).push_back(cur);
 
 
 			for (int j = 0; j < cnt - 2; j++)
@@ -1006,12 +1010,12 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 					cur.second = 1;
 				else
 					cur.second = 0;
-				logicalValues[i].push_back(cur);
+				logicalValues.at(i).push_back(cur);
 			}
 
 			cur.first = cnt - 1;
 			cur.second = 1;
-			logicalValues[i].push_back(cur);
+			logicalValues.at(i).push_back(cur);
 		}
 
 		MicroProgramm programm;
@@ -1027,15 +1031,15 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		for (int i = 0; i < numberrOfMC; i++)
 		{
 			System::String^ s = Convert::ToString(dataGridView4[ind, i]->Value);
-			prog[i].x = LogicalConditions[ConvertToASCII(s)];
+			prog.at(i).x = LogicalConditions[ConvertToASCII(s)];
 
 			if (Convert::ToString(dataGridView4[ind + 1, i]->Value) == L"1")
-				prog[i].i = 1;
+				prog.at(i).i = 1;
 			else
-				prog[i].i = 0;
+				prog.at(i).i = 0;
 
 			s = Convert::ToString(dataGridView4[ind + 2, i]->Value);
-			prog[i].A1 = mcMap[ConvertToASCII(s)];
+			prog.at(i).A1 = mcMap[ConvertToASCII(s)];
 
 			for (int j = 1; j <= numberOfSetsYi; j++)
 			{
@@ -1044,7 +1048,7 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				{
 					if (microOperation[k].setYi == j && microOperation[k].code == ConvertToASCII(s))
 					{
-						prog[i].microOperations.push_back(microOperation[k]);
+						prog.at(i).microOperations.push_back(microOperation[k]);
 						break;
 					}
 				}
@@ -1061,12 +1065,25 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 				result += L"; ";
 			if (ai != L"")
 				ai += L"; ";
+			int cnt1 = 0, cnt2 = 0;
+
+			for (int i = 0; i < ai->Length; i++)
+				cnt1++;
+
+			for (int i = 0; i < result->Length; i++)
+				cnt2++;
+
+			while (cnt1 < cnt2)
+			{
+				ai += L" ";
+				cnt1++;
+			}
 			result += gcnew String(prog.at(res.at(i)).microOperations.at(0).yi.c_str());
 			for (int j = 1; j < numberOfSetsYi; j++)
 			{
 				result += L", " + gcnew String(prog.at(res.at(i)).microOperations.at(j).yi.c_str());
 			}
-			ai += res[i];
+			ai += res.at(i);
 		}
 
 		this->TextResult->Text = result;
@@ -1178,7 +1195,6 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			this->TextCurrentRes->Visible = true;
 			this->button3->Visible = true;
 			this->TextCurrentRes->Text = L"";
-			
 
 			//считываем таблицу микрокоманд
 			std::map<std::string, int> mcMap;
@@ -1231,7 +1247,7 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 				std::pair<int, bool> cur;
 				cur.first = 0;
 				cur.second = 0;
-				logicalValues[i].push_back(cur);
+				logicalValues.at(i).push_back(cur);
 
 
 				for (int j = 0; j < cnt - 2; j++)
@@ -1241,12 +1257,12 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 						cur.second = 1;
 					else
 						cur.second = 0;
-					logicalValues[i].push_back(cur);
+					logicalValues.at(i).push_back(cur);
 				}
 
 				cur.first = cnt - 1;
 				cur.second = 1;
-				logicalValues[i].push_back(cur);
+				logicalValues.at(i).push_back(cur);
 			}
 
 			MicroProgramm programm;
@@ -1262,24 +1278,24 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 			for (int i = 0; i < numberrOfMC; i++)
 			{
 				System::String^ s = Convert::ToString(dataGridView4[ind, i]->Value);
-				prog[i].x = LogicalConditions[ConvertToASCII(s)];
+				prog.at(i).x = LogicalConditions[ConvertToASCII(s)];
 
 				if (Convert::ToString(dataGridView4[ind + 1, i]->Value) == L"1")
-					prog[i].i = 1;
+					prog.at(i).i = 1;
 				else
-					prog[i].i = 0;
+					prog.at(i).i = 0;
 
 				s = Convert::ToString(dataGridView4[ind + 2, i]->Value);
-				prog[i].A1 = mcMap[ConvertToASCII(s)];
+				prog.at(i).A1 = mcMap[ConvertToASCII(s)];
 
 				for (int j = 1; j <= numberOfSetsYi; j++)
 				{
 					s = Convert::ToString(dataGridView4[j, i]->Value);
 					for (int k = 0; k < microOperation.size(); k++)
 					{
-						if (microOperation[k].setYi == j && microOperation[k].code == ConvertToASCII(s))
+						if (microOperation.at(k).setYi == j && microOperation[k].code == ConvertToASCII(s))
 						{
-							prog[i].microOperations.push_back(microOperation[k]);
+							prog.at(i).microOperations.push_back(microOperation.at(k));
 							break;
 						}
 					}
@@ -1301,12 +1317,12 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 
 				System::String^ result = L"";
 				System::String^ curRes = L"";
-				result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
-				curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+				result += gcnew String(prog[currentStep].microOperations.at(0).yi.c_str());
+				curRes += gcnew String(prog[currentStep].microOperations.at(0).yi.c_str());
 				for (int j = 1; j < numberOfSetsYi; j++)
 				{
-					result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
-					curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+					result += L", " + gcnew String(prog.at(currentStep).microOperations.at(j).yi.c_str());
+					curRes += L", " + gcnew String(prog.at(currentStep).microOperations.at(j).yi.c_str());
 				}
 				this->TextCurrentRes->Text = curRes;
 				this->TextResult->Text += result;
@@ -1328,16 +1344,28 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 					this->TextResult->Text += L"; ";
 				if (this->richTextBox15->Text != L"")
 					this->richTextBox15->Text += L"; ";
+				int cnt1 = 0, cnt2 = 0;
+
+				for (int i = 0; i < this->richTextBox15->Text->Length; i++)
+					cnt1++;
+
+				for (int i = 0; i < this->TextResult->Text->Length; i++)
+					cnt2++;
+
+				while (cnt1 < cnt2)
+				{this->richTextBox15->Text += L" ";
+				cnt1++;
+			}
 				this->richTextBox15->Text += currentStep;
 
 				System::String^ result = L"";
 				System::String^ curRes = L"";
-				result += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
-				curRes += gcnew String(prog[currentStep].microOperations[0].yi.c_str());
+				result += gcnew String(prog.at(currentStep).microOperations.at(0).yi.c_str());
+				curRes += gcnew String(prog.at(currentStep).microOperations.at(0).yi.c_str());
 				for (int j = 1; j < numberOfSetsYi; j++)
 				{
-					result += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
-					curRes += L", " + gcnew String(prog[currentStep].microOperations[j].yi.c_str());
+					result += L", " + gcnew String(prog.at(currentStep).microOperations.at(j).yi.c_str());
+					curRes += L", " + gcnew String(prog.at(currentStep).microOperations.at(j).yi.c_str());
 				}
 				this->TextCurrentRes->Text = curRes;
 				this->TextResult->Text += result;
@@ -1450,8 +1478,8 @@ private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e
 	std::string path = ConvertToASCII(saveFileDialog1->FileName);
 	std::ofstream out;          // поток для записи
 	out.open(path, std::ios::out | std::ios::trunc);
-	out << "Result: " + ConvertToASCII(this->TextResult->Text) + "\n";
-	out << "Sequence of addresses: " + ConvertToASCII(this->richTextBox15->Text) + "\n";
+	out << ConvertToASCII(this->TextResult->Text) + "\n";
+	out << ConvertToASCII(this->richTextBox15->Text) + "\n";
 	out.close();
 }
 private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1525,7 +1553,7 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 			std::pair<int, bool> cur;
 			cur.first = 0;
 			cur.second = 0;
-			logicalValues[i].push_back(cur);
+			logicalValues.at(i).push_back(cur);
 
 			for (int j = 0; j < cnt - 2; j++)
 			{
@@ -1534,12 +1562,12 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 					cur.second = 1;
 				else
 					cur.second = 0;
-				logicalValues[i].push_back(cur);
+				logicalValues.at(i).push_back(cur);
 			}
 
 			cur.first = cnt - 1;
 			cur.second = 1;
-			logicalValues[i].push_back(cur);
+			logicalValues.at(i).push_back(cur);
 		}
 
 		MicroProgramm programm;
@@ -1555,15 +1583,15 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 		for (int i = 0; i < numberrOfMC; i++)
 		{
 			System::String^ s = Convert::ToString(dataGridView4[ind, i]->Value);
-			prog[i].x = LogicalConditions[ConvertToASCII(s)];
+			prog.at(i).x = LogicalConditions[ConvertToASCII(s)];
 
 			if (Convert::ToString(dataGridView4[ind + 1, i]->Value) == L"1")
-				prog[i].i = 1;
+				prog.at(i).i = 1;
 			else
-				prog[i].i = 0;
+				prog.at(i).i = 0;
 
 			s = Convert::ToString(dataGridView4[ind + 2, i]->Value);
-			prog[i].A1 = mcMap[ConvertToASCII(s)];
+			prog.at(i).A1 = mcMap[ConvertToASCII(s)];
 
 			for (int j = 1; j <= numberOfSetsYi; j++)
 			{
@@ -1571,9 +1599,9 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 				bool tr = 0;
 				for (int k = 0; k < microOperation.size(); k++)
 				{
-					if (microOperation[k].setYi == j && microOperation[k].code == ConvertToASCII(s))
+					if (microOperation.at(k).setYi == j && microOperation.at(k).code == ConvertToASCII(s))
 					{
-						prog[i].microOperations.push_back(microOperation[k]);
+						prog.at(i).microOperations.push_back(microOperation.at(k));
 						tr = 1;
 						break;
 					}
@@ -1582,7 +1610,7 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 				{
 					MicroOperation cur;
 					cur.setYi = j;
-					prog[i].microOperations.push_back(cur);
+					prog.at(i).microOperations.push_back(cur);
 				}
 			}
 		}
@@ -1625,7 +1653,7 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 
 			for (int i = 0; i < microOperation.size(); i++) {
 				
-				file << microOperation[i].code << "\n" << microOperation[i].yi << "\n" << microOperation[i].setYi << "\n";
+				file << microOperation.at(i).code << "\n" << microOperation.at(i).yi << "\n" << microOperation.at(i).setYi << "\n";
 
 			}
 			file << "table4@" << '\n' << ConvertToASCII(Convert::ToString(this->richTextBox9->Text)) << "\n";

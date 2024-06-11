@@ -1,18 +1,23 @@
-﻿  mplc.cpp
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(749,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(888,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(930,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(944,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1150,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1152,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1300,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1387,31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1407,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1461,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1475,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1684,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1691,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1695,22): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1713,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+﻿  MicroCommand.cpp
+  MicroOperation.cpp
+  MicroProgramm.cpp
+  mplc.cpp
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(753,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(892,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(934,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(948,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1167,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1169,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1316,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1415,31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1435,1): warning C4965: implicit box of integer 0; use nullptr or explicit cast
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1489,19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1503,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1712,1): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1719,23): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1723,22): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\MPLC\mplc.h(1741,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  .NETFramework,Version=v4.6.1.AssemblyAttributes.cpp
+  Generating Code...
   MicroCommand.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   MPLC.vcxproj -> C:\Users\masha\OneDrive\Рабочий стол\Прога Бабкину\MPLC\x64\Debug\MPLC.exe
