@@ -1406,10 +1406,16 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 					while (curCell->Length < curPow)
 						curCell = 0 + curCell;
 					dataGridView2[i * 2, j]->Value = curCell;
-					dataGridView2[i * 2, j]->ReadOnly = true;
 				}
 			}
 		}
+
+		for (int i = 0; i < dataGridView2->Columns->Count / 2; i++)
+		{
+			for (int j = 0; j < dataGridView2->Rows->Count; j++)
+				dataGridView2[i * 2, j]->ReadOnly = true;
+		}
+
 	}
 	catch (...)
 	{
@@ -1437,8 +1443,11 @@ private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e
 
 private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
 	setlocale(0, "Rus");
+	saveFileDialog1->Filter = "txt files (*.txt)|*.txt";
+	saveFileDialog1->FilterIndex = 1;
+	saveFileDialog1->RestoreDirectory = true;
 	this->saveFileDialog1->ShowDialog();
-	std::string path = ConvertToASCII(saveFileDialog1->FileName) + ".txt";
+	std::string path = ConvertToASCII(saveFileDialog1->FileName);
 	std::ofstream out;          // поток для записи
 	out.open(path, std::ios::out | std::ios::trunc);
 	out << "Result: " + ConvertToASCII(this->TextResult->Text) + "\n";
@@ -1579,8 +1588,11 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 		}
 		programm.microCommands = prog;
 
+		saveFileDialog1->Filter = "txt files (*.txt)|*.txt";
+		saveFileDialog1->FilterIndex = 1;
+		saveFileDialog1->RestoreDirectory = true;
 		this->saveFileDialog1->ShowDialog();
-		std::string path = ConvertToASCII(saveFileDialog1->FileName) + ".txt";
+		std::string path = ConvertToASCII(saveFileDialog1->FileName);
 		std::ofstream file;          // поток для записи
 		file.open(path, std::ios::out | std::ios::trunc);
 		//std::vector<std::vector<std::pair<int, bool>>> logicalValues(numberOfTacts);
@@ -1653,6 +1665,9 @@ private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e
 private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->richTextBox13->Visible = false;
 	try {
+		openFileDialog1->Filter = "txt files (*.txt)|*.txt";
+		openFileDialog1->FilterIndex = 1;
+		openFileDialog1->RestoreDirectory = true;
 		this->openFileDialog1->ShowDialog();
 		std::string path = ConvertToASCII(openFileDialog1->FileName);
 		std::ifstream file;          // поток для записи
@@ -1703,6 +1718,7 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 						for (int j = 0; j < numberOfRows; j++) {
 							std::getline(file, line);
 							dataGridView2[ 2* i, j]->Value = gcnew System::String(line.c_str());
+							dataGridView2[2 * i, j]->ReadOnly = true;
 							std::getline(file, line);
 							dataGridView2[2* i + 1, j]->Value = gcnew System::String(line.c_str());
 							std::getline(file, line);
@@ -1742,6 +1758,7 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 						dataGridView4[numberOfSetsYi + 2, i]->Value = gcnew System::String(line.c_str());
 						std::getline(file, line);
 						dataGridView4[numberOfSetsYi + 3, i]->Value = gcnew System::String(line.c_str());
+						dataGridView4[0, i]->ReadOnly = true;
 					}
 				}
 
